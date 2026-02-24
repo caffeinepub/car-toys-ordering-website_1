@@ -1,0 +1,146 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add Product Ordering Page",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create order page route displaying product details",
+      "acceptanceCriteria": [
+        "Order page is accessible via /order/:productId route",
+        "Product details (image, name, description, price) are displayed on the order page",
+        "Product data is fetched based on the productId parameter"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/OrderPage.tsx",
+          "operation": "create",
+          "description": "Create OrderPage component that accepts productId route parameter, fetches product data from mockProducts using the ID, and displays product image, name, description, and price. Use existing ProductCard styling patterns for consistency."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add new route configuration for /order/:productId that renders OrderPage component. Import OrderPage and add route definition following the existing pattern with home, products, and contact routes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add order form with customer and shipping fields",
+      "acceptanceCriteria": [
+        "Form includes all required fields: name, email, phone, address fields, and quantity",
+        "Quantity selector starts at 1 and has increment/decrement buttons",
+        "All form fields have appropriate input types and validation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/OrderForm.tsx",
+          "operation": "create",
+          "description": "Create OrderForm component with controlled form inputs for customer name, email, phone number, shipping address (street, city, postal code, country), and quantity selector with increment/decrement buttons. Use Tailwind CSS classes matching existing form patterns from ContactPage. Initialize quantity state at 1."
+        },
+        {
+          "path": "frontend/src/pages/OrderPage.tsx",
+          "operation": "modify",
+          "description": "Import and integrate OrderForm component into OrderPage layout. Pass necessary props for form submission handling and quantity updates."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Display order summary with price calculation",
+      "acceptanceCriteria": [
+        "Order summary section displays product name and image",
+        "Unit price, quantity, and total price are clearly shown",
+        "Total price updates automatically when quantity changes"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/OrderSummary.tsx",
+          "operation": "create",
+          "description": "Create OrderSummary component that displays product thumbnail, name, unit price, quantity, and calculated total price. Accept product data and quantity as props. Format prices consistently using dollar sign and two decimal places. Use Tailwind classes for card-style summary box."
+        },
+        {
+          "path": "frontend/src/pages/OrderPage.tsx",
+          "operation": "modify",
+          "description": "Import and add OrderSummary component to OrderPage. Manage quantity state at OrderPage level and pass it to both OrderForm and OrderSummary to ensure total price updates reactively when quantity changes."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement form validation with error messages",
+      "acceptanceCriteria": [
+        "Email field validates email format",
+        "Phone number field validates phone format",
+        "All required fields show error messages when empty on submit",
+        "Postal code field validates format"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/useOrderForm.ts",
+          "operation": "create",
+          "description": "Create useOrderForm hook managing form state, validation logic, and error messages for all order form fields. Include validators for email format (regex), phone format, required fields, and postal code format. Return form values, errors, handleChange, and handleSubmit functions following patterns from ContactPage."
+        },
+        {
+          "path": "frontend/src/components/OrderForm.tsx",
+          "operation": "modify",
+          "description": "Integrate useOrderForm hook into OrderForm component. Display inline error messages below each field when validation fails. Style error messages with red text using existing Tailwind patterns. Prevent form submission when validation errors exist."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add Place Order button with success confirmation",
+      "acceptanceCriteria": [
+        "Place Order button is clearly visible and styled",
+        "Button triggers form validation before submission",
+        "Success message displays order number, product details, and delivery estimate",
+        "Form is cleared after successful order placement"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/OrderForm.tsx",
+          "operation": "modify",
+          "description": "Add Place Order button to OrderForm with primary button styling matching existing CTA buttons. Wire button to form submission handler that triggers validation before proceeding. Generate mock order number on successful submission and show success message with order details and estimated delivery (7-10 business days). Clear form fields after successful submission."
+        },
+        {
+          "path": "frontend/src/pages/OrderPage.tsx",
+          "operation": "modify",
+          "description": "Add state management for order submission success status. Display success confirmation message overlay or section when order is placed successfully, showing generated order number, ordered product name and quantity, and delivery estimate. Provide option to place another order or return to products."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Update ProductCard to navigate to order page",
+      "acceptanceCriteria": [
+        "Order Now button on ProductCard navigates to /order/:productId",
+        "Product ID is correctly passed in the URL parameter",
+        "Navigation works from all product listings (home page and products page)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Update Order Now button to use TanStack Router Link component navigating to /order/:productId route with the product's ID. Import Link from @tanstack/react-router and replace button click handler with navigation. Maintain existing button styling."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add navigation link to return to products page",
+      "acceptanceCriteria": [
+        "Back to Products or Continue Shopping link is visible on order page",
+        "Link navigates back to /products page",
+        "Link is styled consistently with site navigation"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/OrderPage.tsx",
+          "operation": "modify",
+          "description": "Add Continue Shopping link at the top of OrderPage that navigates back to /products route using TanStack Router Link. Style link with hover effects matching existing navigation patterns. Position link prominently near page header for easy access."
+        }
+      ]
+    }
+  ]
+}

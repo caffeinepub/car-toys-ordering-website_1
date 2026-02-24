@@ -1,0 +1,82 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "E-commerce website (Carzzz) for displaying car products with categories and ordering functionality",
+  "architectural_notes": [
+    "Application deployed on Internet Computer blockchain using canisters",
+    "Backend implemented in Motoko language",
+    "Website displays car products organized by categories"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-new-order-page-route-at-order-productid-that-displays-the-selected-product-s-details-including-image-name-description-and-price",
+      "title": "Create a new order page route at '/order/:productId' that displays the selected product's details including image, name, description, and price",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-order-form-to-the-order-page-with-fields-for-customer-name-email-phone-number-shipping-address-street-city-postal-code-country-and-quantity-selector",
+      "title": "Add an order form to the order page with fields for customer name, email, phone number, shipping address (street, city, postal code, country), and quantity selector",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-order-summary-on-the-order-page-showing-selected-product-quantity-unit-price-and-calculated-total-price",
+      "title": "Display order summary on the order page showing selected product, quantity, unit price, and calculated total price",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-form-validation-for-the-order-form-with-error-messages-for-invalid-or-missing-required-fields",
+      "title": "Implement form validation for the order form with error messages for invalid or missing required fields",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-place-order-button-that-validates-the-form-and-shows-a-success-message-with-order-confirmation-details",
+      "title": "Add a 'Place Order' button that validates the form and shows a success message with order confirmation details",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-productcard-component-to-change-the-order-now-button-to-navigate-to-the-order-page-order-productid-for-the-specific-product",
+      "title": "Update the ProductCard component to change the 'Order Now' button to navigate to the order page (/order/:productId) for the specific product",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-navigation-link-to-return-to-products-page-from-the-order-page",
+      "title": "Add navigation link to return to products page from the order page",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add product ordering page",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "gameProjectType": "none",
+  "projectName": "Carzzz",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
