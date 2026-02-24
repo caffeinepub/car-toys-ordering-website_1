@@ -1,68 +1,34 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "E-commerce website (Carzzz) for displaying car products with categories and ordering functionality",
+  "summary": "Product ordering web application with member authentication and profile management",
   "architectural_notes": [
-    "Application deployed on Internet Computer blockchain using canisters",
-    "Backend implemented in Motoko language",
-    "Website displays car products organized by categories"
+    "Member authentication system required for profile access control"
   ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-new-order-page-route-at-order-productid-that-displays-the-selected-product-s-details-including-image-name-description-and-price",
-      "title": "Create a new order page route at '/order/:productId' that displays the selected product's details including image, name, description, and price",
+      "id": "feature-create-a-profilepage-component-at-route-profile-that-displays-the-authenticated-user-s-information-including-when-they-registered",
+      "title": "Create a ProfilePage component at route /profile that displays the authenticated user's information including when they registered",
       "reqIds": [
-        "REQ-1"
+        "REQ-9"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-an-order-form-to-the-order-page-with-fields-for-customer-name-email-phone-number-shipping-address-street-city-postal-code-country-and-quantity-selector",
-      "title": "Add an order form to the order page with fields for customer name, email, phone number, shipping address (street, city, postal code, country), and quantity selector",
+      "id": "feature-add-a-profile-navigation-link-in-the-navigation-component-that-is-only-visible-to-authenticated-members",
+      "title": "Add a Profile navigation link in the Navigation component that is only visible to authenticated members",
       "reqIds": [
-        "REQ-2"
+        "REQ-10"
       ],
       "version": 1
     },
     {
-      "id": "feature-display-order-summary-on-the-order-page-showing-selected-product-quantity-unit-price-and-calculated-total-price",
-      "title": "Display order summary on the order page showing selected product, quantity, unit price, and calculated total price",
+      "id": "feature-automatically-register-users-in-the-backend-when-they-first-authenticate-with-internet-identity",
+      "title": "Automatically register users in the backend when they first authenticate with Internet Identity",
       "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-form-validation-for-the-order-form-with-error-messages-for-invalid-or-missing-required-fields",
-      "title": "Implement form validation for the order form with error messages for invalid or missing required fields",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-place-order-button-that-validates-the-form-and-shows-a-success-message-with-order-confirmation-details",
-      "title": "Add a 'Place Order' button that validates the form and shows a success message with order confirmation details",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-productcard-component-to-change-the-order-now-button-to-navigate-to-the-order-page-order-productid-for-the-specific-product",
-      "title": "Update the ProductCard component to change the 'Order Now' button to navigate to the order page (/order/:productId) for the specific product",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-navigation-link-to-return-to-products-page-from-the-order-page",
-      "title": "Add navigation link to return to products page from the order page",
-      "reqIds": [
-        "REQ-7"
+        "REQ-11"
       ],
       "version": 1
     }
@@ -70,12 +36,19 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add product ordering page",
+      "summary": "Add member-only profile page showing registered users",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create a backend function to store and retrieve user profile data including registration timestamp and user principal",
+      "reqIds": [
+        "REQ-8"
+      ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
   "projectName": "Carzzz",
   "clarification_mode": "instant",
   "clarification_rounds": 0

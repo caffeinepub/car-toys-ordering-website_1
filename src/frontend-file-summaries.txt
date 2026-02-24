@@ -1,20 +1,22 @@
 {
   "frontend/src/index.css": "Global styles with premium automotive design system using Orbitron and Rajdhani fonts, OKLCH color tokens for dark/light modes with blacks, silvers, reds, and golds, plus custom utility classes for gold and silver accents.",
   "frontend/tailwind.config.js": "Tailwind configuration extended with Orbitron and Rajdhani font families, premium automotive color palette (gold, silver), custom shadows (premium, premium-lg), and fade-in animation for polished UI transitions.",
-  "frontend/src/App.tsx": "Main application component with TanStack Router configuration including routes for home, products, contact, and the new order page with dynamic productId parameter, all rendered within a shared layout with navigation and footer.",
-  "frontend/src/components/Navigation.tsx": "Sticky header navigation component with Carzzz branding, desktop and mobile menu support, active route highlighting, and premium automotive styling with accent colors.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router configuration including routes for home, products, contact, order, and profile pages, with integrated UserProfileSetup modal that appears when authenticated users need to complete their profile.",
+  "frontend/src/components/Navigation.tsx": "Sticky header navigation component with Carzzz branding, desktop and mobile menu support, active route highlighting, and conditional Profile link visible only to authenticated users with fixed conflicting classnames.",
   "frontend/src/components/Footer.tsx": "Footer component with Carzzz brand information, quick links, social media icons, copyright notice, and Caffeine.ai attribution with UTM tracking parameters.",
   "frontend/src/pages/HomePage.tsx": "Home page featuring hero section with banner image, value propositions highlighting Carzzz brand, and call-to-action sections directing users to products and contact pages.",
   "frontend/src/pages/ProductsPage.tsx": "Products page that fetches and displays three categories of car toys with loading and error states using React Query hooks.",
-  "frontend/src/pages/ContactPage.tsx": "Contact page with form validation for name, email, and message fields, submission handling with success feedback, and contact information display with updated Carzzz email.",
+  "frontend/src/pages/ContactPage.tsx": "Contact page with form validation for name, email, and message fields, submission handling with success feedback, and contact information display with updated Tailwind v3 classnames.",
   "frontend/src/components/ProductCategory.tsx": "Reusable category section component that displays a category title, description, and grid of product cards with customizable accent colors.",
   "frontend/src/components/ProductCard.tsx": "Product card component displaying car toy image, name, description, price, and Order button that navigates to the order page with the product's ID using TanStack Router Link.",
-  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for fetching products by category and submitting contact inquiries, using mock data since backend is empty.",
+  "frontend/src/hooks/useQueries.ts": "Custom React Query hooks for fetching products, submitting contact inquiries, and managing user profiles including getCallerUserProfile and saveCallerUserProfile with proper actor dependency handling.",
   "frontend/index.html": "HTML entry point with updated page title \"Carzzz - Premium Car Toys\" and standard React app structure.",
   "frontend/src/types/product.ts": "Type definitions for Product interface with optional image field and Category enum used throughout the application for car toy products.",
   "frontend/src/data/mockProducts.ts": "Mock product data containing 21 car toys across three categories (7 Sport Cars, 7 Hyper Sport Cars, 7 F1 Cars) with complete details including unique image filenames for each product.",
   "frontend/src/pages/OrderPage.tsx": "Order page component that displays product details, manages order form and summary, handles quantity state, and shows success confirmation with order number and delivery estimate after successful order placement.",
   "frontend/src/components/OrderForm.tsx": "Order form component with customer information fields (name, email, phone, address), quantity selector with increment/decrement buttons, form validation, and submit handling with loading state.",
   "frontend/src/components/OrderSummary.tsx": "Order summary component displaying product thumbnail, name, unit price, quantity, calculated total price, and additional order information like free shipping and delivery time.",
-  "frontend/src/hooks/useOrderForm.ts": "Custom hook managing order form state, validation logic for all fields (email format, phone format, postal code format, required fields), error messages, and form reset functionality."
+  "frontend/src/hooks/useOrderForm.ts": "Custom hook managing order form state, validation logic for all fields (email format, phone format, postal code format, required fields), error messages, and form reset functionality.",
+  "frontend/src/pages/ProfilePage.tsx": "Profile page component that displays authenticated user information including name, principal ID, and registration timestamp, with login prompt for unauthenticated users and loading states.",
+  "frontend/src/components/UserProfileSetup.tsx": "Modal component that prompts new users to enter their name upon first login, using a dialog that cannot be dismissed until profile setup is complete."
 }

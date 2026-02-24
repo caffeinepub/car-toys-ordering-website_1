@@ -1,15 +1,13 @@
 # Specification
 
 ## Summary
-**Goal:** Add a product ordering page where users can purchase cars from the catalog.
+**Goal:** Add a member-only profile page for registered users that displays their registration information.
 
 **Planned changes:**
-- Create a new order page route at `/order/:productId` displaying product details (image, name, description, price)
-- Add an order form with fields for customer information (name, email, phone, shipping address) and quantity selector
-- Display order summary showing product, quantity, unit price, and calculated total
-- Implement form validation with error messages for invalid or missing fields
-- Add "Place Order" button that validates and shows success confirmation with order details
-- Update ProductCard "Order Now" button to navigate to the order page for each product
-- Add navigation link to return to products page from order page
+- Create backend functions to store and retrieve user profile data (principal and registration timestamp)
+- Automatically register users when they first authenticate with Internet Identity
+- Create a ProfilePage component at /profile that displays the authenticated user's principal and registration date
+- Add a Profile navigation link visible only to authenticated members
+- Restrict profile page access to authenticated users only
 
-**User-visible outcome:** Users can click "Order Now" on any car product to access a dedicated order page where they can fill out their information, select quantity, review the order summary with calculated total, and place an order with form validation and confirmation.
+**User-visible outcome:** Registered members can navigate to a Profile page that shows their Internet Identity principal and when they registered on the website. The Profile link appears in the navigation menu only when logged in.

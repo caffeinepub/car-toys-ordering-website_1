@@ -1,19 +1,50 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-24T02:45:48.652Z",
-  "summary": "All requirements from the BuildRequest have been successfully implemented in the diff. The order page route was created with product detail display, a comprehensive order form with validation, order summary with dynamic pricing, success confirmation with order details, updated ProductCard navigation, and back-to-products navigation. No missing requirements or hallucinated features were identified.",
-  "missing_requirements": [],
-  "hallucinated_features": [],
-  "confidence": 0.95,
+  "generatedAt": "2026-02-24T08:35:35.489Z",
+  "summary": "The implementation includes hallucinated user profile features (name field and profile setup modal) that were explicitly excluded in non-goals. Backend registration logic is incorrectly placed in a separate function instead of automatic registration on first authentication. The diff does not show automatic registration on authentication.",
+  "missing_requirements": [
+    {
+      "id": "REQ-11",
+      "requirement": "Automatically register users in the backend when they first authenticate with Internet Identity",
+      "reason": "The backend function registerAndStoreUser requires explicit invocation with a name parameter. There is no evidence in the diff of automatic registration occurring on first authentication. The user must manually trigger registration through the profile setup UI, which contradicts the automatic registration requirement.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/UserProfileSetup.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile name field and profile setup modal",
+      "reason": "The BuildRequest non-goals explicitly state 'Editable user profiles with custom fields' should not be implemented. However, the diff introduces a name field in UserProfile type, a UserProfileSetup component with a form to enter names, and a registerAndStoreUser function that accepts a name parameter. This contradicts the non-goals constraint.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/UserProfileSetup.tsx",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/App.tsx"
+      ]
+    },
+    {
+      "description": "URL parameter utility functions",
+      "reason": "The diff adds a new file frontend/src/utils/urlParams.ts with extensive URL parameter parsing and session storage utilities. These functions (getUrlParameter, storeSessionParameter, getPersistedUrlParameter, etc.) were not requested in any requirement and appear unrelated to the profile page feature.",
+      "evidence": [
+        "frontend/src/utils/urlParams.ts"
+      ]
+    }
+  ],
+  "confidence": 0.92,
   "changed_files": [
+    "backend/main.mo",
     "frontend-file-summaries.txt",
     "frontend/src/App.tsx",
-    "frontend/src/components/OrderForm.tsx",
-    "frontend/src/components/OrderSummary.tsx",
-    "frontend/src/components/ProductCard.tsx",
-    "frontend/src/hooks/useOrderForm.ts",
-    "frontend/src/pages/OrderPage.tsx",
+    "frontend/src/components/Navigation.tsx",
+    "frontend/src/components/UserProfileSetup.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/pages/ContactPage.tsx",
+    "frontend/src/pages/ProfilePage.tsx",
+    "frontend/src/utils/urlParams.ts",
     "project_state.json"
   ]
 }

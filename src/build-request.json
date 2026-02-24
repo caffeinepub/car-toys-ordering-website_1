@@ -1,140 +1,92 @@
 {
   "kind": "build_request",
-  "title": "Add product ordering page",
+  "title": "Add member-only profile page for registered users",
   "projectName": "Carzzz",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Create a new order page route at '/order/:productId' that displays the selected product's details including image, name, description, and price",
+      "id": "REQ-8",
+      "text": "Create a backend function to store and retrieve user profile data including registration timestamp and user principal",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-user-profile-request"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Backend stores user registration data with principal and timestamp",
+        "Backend provides a query function to retrieve the authenticated user's profile",
+        "Only authenticated users can access their own profile data"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Create a ProfilePage component at route /profile that displays the authenticated user's information including when they registered",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-user-profile-request"
         ],
         "quotes": [
-          "I want add product ordering page in this website"
+          "Add a profile page",
+          "That profile page show only members"
         ]
       },
       "acceptanceCriteria": [
-        "Order page is accessible via /order/:productId route",
-        "Product details (image, name, description, price) are displayed on the order page",
-        "Product data is fetched based on the productId parameter"
+        "ProfilePage component is created and accessible at /profile route",
+        "Page displays user's Internet Identity principal",
+        "Page displays registration date/time",
+        "Page is only accessible to authenticated users",
+        "Unauthenticated users are prompted to log in via Internet Identity"
       ]
     },
     {
-      "id": "REQ-2",
-      "text": "Add an order form to the order page with fields for customer name, email, phone number, shipping address (street, city, postal code, country), and quantity selector",
+      "id": "REQ-10",
+      "text": "Add a Profile navigation link in the Navigation component that is only visible to authenticated members",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-user-profile-request"
         ],
         "quotes": [
-          "I want add product ordering page in this website"
+          "show only members"
         ]
       },
       "acceptanceCriteria": [
-        "Form includes all required fields: name, email, phone, address fields, and quantity",
-        "Quantity selector starts at 1 and has increment/decrement buttons",
-        "All form fields have appropriate input types and validation"
+        "Profile link appears in navigation menu only when user is authenticated",
+        "Link navigates to /profile route",
+        "Link is hidden when user is not logged in"
       ]
     },
     {
-      "id": "REQ-3",
-      "text": "Display order summary on the order page showing selected product, quantity, unit price, and calculated total price",
-      "target": "frontend",
+      "id": "REQ-11",
+      "text": "Automatically register users in the backend when they first authenticate with Internet Identity",
+      "target": "both",
       "source": {
         "messageIds": [
-          "msg-last"
+          "msg-user-profile-request"
         ],
         "quotes": [
-          "I want add product ordering page in this website"
+          "Who is register the website"
         ]
       },
       "acceptanceCriteria": [
-        "Order summary section displays product name and image",
-        "Unit price, quantity, and total price are clearly shown",
-        "Total price updates automatically when quantity changes"
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Implement form validation for the order form with error messages for invalid or missing required fields",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Email field validates email format",
-        "Phone number field validates phone format",
-        "All required fields show error messages when empty on submit",
-        "Postal code field validates format"
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add a 'Place Order' button that validates the form and shows a success message with order confirmation details",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Place Order button is clearly visible and styled",
-        "Button triggers form validation before submission",
-        "Success message displays order number, product details, and delivery estimate",
-        "Form is cleared after successful order placement"
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Update the ProductCard component to change the 'Order Now' button to navigate to the order page (/order/:productId) for the specific product",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Order Now button on ProductCard navigates to /order/:productId",
-        "Product ID is correctly passed in the URL parameter",
-        "Navigation works from all product listings (home page and products page)"
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Add navigation link to return to products page from the order page",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-last"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Back to Products or Continue Shopping link is visible on order page",
-        "Link navigates back to /products page",
-        "Link is styled consistently with site navigation"
+        "User registration is automatically created upon first authentication",
+        "Registration timestamp is recorded",
+        "Subsequent logins do not create duplicate registrations"
       ]
     }
   ],
   "constraints": [
-    "Use TanStack Router for routing as established in App.tsx",
-    "Follow existing styling patterns with Tailwind CSS and OKLCH color tokens from index.css",
-    "Use Orbitron and Rajdhani fonts as defined in tailwind.config.js",
-    "Maintain consistent component structure with existing pages (HomePage, ProductsPage, ContactPage)",
-    "Product data should be fetched from mockProducts.ts using the existing data structure"
+    "Use Internet Identity for authentication - do not introduce third-party auth providers",
+    "Do not modify immutable frontend paths: useInternetIdentity hooks, useActor.ts, main.tsx, or components/ui directory",
+    "Maintain single-actor architecture in backend/main.mo"
   ],
   "nonGoals": [
-    "Payment processing integration",
-    "Backend order persistence or database storage",
-    "User account creation or authentication for orders",
-    "Email notifications for order confirmation",
-    "Inventory management or stock tracking",
-    "Order history or tracking functionality"
+    "Editable user profiles with custom fields",
+    "User avatars or profile pictures",
+    "Admin dashboard to view all registered users",
+    "Email verification or additional registration forms"
   ],
   "imageRequirements": {
     "required": [],

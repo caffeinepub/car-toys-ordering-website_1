@@ -1,11 +1,15 @@
 import { Link, useRouterState } from '@tanstack/react-router';
-import { Car, Menu, X } from 'lucide-react';
+import { Car, Menu, X, User } from 'lucide-react';
 import { useState } from 'react';
+import { useInternetIdentity } from '../hooks/useInternetIdentity';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const routerState = useRouterState();
   const currentPath = routerState.location.pathname;
+  const { identity } = useInternetIdentity();
+
+  const isAuthenticated = !!identity;
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -45,6 +49,19 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            {isAuthenticated && (
+              <Link
+                to="/profile"
+                className={`px-5 py-2 text-base font-semibold tracking-wide transition-all duration-200 flex items-center gap-2 ${
+                  isActive('/profile')
+                    ? 'text-accent'
+                    : 'text-muted-foreground hover:text-foreground'
+                }`}
+              >
+                <User className="h-4 w-4" />
+                Profile
+              </Link>
+            )}
           </div>
 
           {/* Mobile menu button */}
@@ -80,6 +97,20 @@ export default function Navigation() {
                   {link.label}
                 </Link>
               ))}
+              {isAuthenticated && (
+                <Link
+                  to="/profile"
+                  className={`flex items-center gap-2 px-4 py-3 text-base font-semibold tracking-wide transition-colors ${
+                    isActive('/profile')
+                      ? 'text-accent bg-accent/10'
+                      : 'text-muted-foreground hover:text-foreground hover:bg-accent/5'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <User className="h-4 w-4" />
+                  Profile
+                </Link>
+              )}
             </div>
           </div>
         )}

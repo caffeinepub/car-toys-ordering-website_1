@@ -2,133 +2,62 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-new-order-page-route-at-order-productid-that-displays-the-selected-product-s-details-including-image-name-description-and-price",
-      "featureTitle": "Create a new order page route at '/order/:productId' that displays the selected product's details including image, name, description, and price",
+      "featureId": "feature-create-a-profilepage-component-at-route-profile-that-displays-the-authenticated-user-s-information-including-when-they-registered",
+      "featureTitle": "Create a ProfilePage component at route /profile that displays the authenticated user's information including when they registered",
       "files": [
         "frontend/src/App.tsx",
-        "frontend/src/pages/OrderPage.tsx"
+        "frontend/src/pages/ProfilePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-9"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-an-order-form-to-the-order-page-with-fields-for-customer-name-email-phone-number-shipping-address-street-city-postal-code-country-and-quantity-selector",
-      "featureTitle": "Add an order form to the order page with fields for customer name, email, phone number, shipping address (street, city, postal code, country), and quantity selector",
+      "featureId": "feature-add-a-profile-navigation-link-in-the-navigation-component-that-is-only-visible-to-authenticated-members",
+      "featureTitle": "Add a Profile navigation link in the Navigation component that is only visible to authenticated members",
       "files": [
-        "frontend/src/components/OrderForm.tsx",
-        "frontend/src/pages/OrderPage.tsx"
+        "frontend/src/components/Navigation.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-10"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-display-order-summary-on-the-order-page-showing-selected-product-quantity-unit-price-and-calculated-total-price",
-      "featureTitle": "Display order summary on the order page showing selected product, quantity, unit price, and calculated total price",
+      "featureId": "feature-automatically-register-users-in-the-backend-when-they-first-authenticate-with-internet-identity",
+      "featureTitle": "Automatically register users in the backend when they first authenticate with Internet Identity",
       "files": [
-        "frontend/src/components/OrderSummary.tsx",
-        "frontend/src/pages/OrderPage.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/UserProfileSetup.tsx",
+        "frontend/src/hooks/useQueries.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0"
       ],
       "testIds": [
-        "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-implement-form-validation-for-the-order-form-with-error-messages-for-invalid-or-missing-required-fields",
-      "featureTitle": "Implement form validation for the order form with error messages for invalid or missing required fields",
-      "files": [
-        "frontend/src/components/OrderForm.tsx",
-        "frontend/src/hooks/useOrderForm.ts"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-place-order-button-that-validates-the-form-and-shows-a-success-message-with-order-confirmation-details",
-      "featureTitle": "Add a 'Place Order' button that validates the form and shows a success message with order confirmation details",
-      "files": [
-        "frontend/src/components/OrderForm.tsx",
-        "frontend/src/pages/OrderPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-productcard-component-to-change-the-order-now-button-to-navigate-to-the-order-page-order-productid-for-the-specific-product",
-      "featureTitle": "Update the ProductCard component to change the 'Order Now' button to navigate to the order page (/order/:productId) for the specific product",
-      "files": [
-        "frontend/src/components/ProductCard.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-navigation-link-to-return-to-products-page-from-the-order-page",
-      "featureTitle": "Add navigation link to return to products page from the order page",
-      "files": [
-        "frontend/src/pages/OrderPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
+        "REQ-11"
       ],
       "confidence": "high"
     }

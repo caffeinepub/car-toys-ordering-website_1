@@ -88,7 +88,7 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
                   <Mail className="h-6 w-6 text-accent" />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
                   <Phone className="h-6 w-6 text-accent" />
                 </div>
                 <div>
@@ -108,7 +108,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start space-x-4">
-                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                <div className="shrink-0 w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
                   <MapPin className="h-6 w-6 text-accent" />
                 </div>
                 <div>
@@ -127,7 +127,7 @@ export default function ContactPage() {
           <div className="bg-card border border-border rounded-lg p-8 shadow-premium">
             {showSuccess && (
               <div className="mb-6 p-4 bg-accent/10 border border-accent rounded flex items-center space-x-3 animate-fade-in">
-                <CheckCircle2 className="h-5 w-5 text-accent flex-shrink-0" />
+                <CheckCircle2 className="h-5 w-5 text-accent shrink-0" />
                 <p className="text-sm font-semibold">Thank you! Your message has been sent successfully.</p>
               </div>
             )}
